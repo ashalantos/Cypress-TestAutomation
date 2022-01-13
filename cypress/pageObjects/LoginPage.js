@@ -1,18 +1,24 @@
-// <reference types="cypress" />
+/// <reference types="cypress" />
 
 class LoginPage
 {
-    email_tb()  { return cy.get("#edit-name")  }
-    password_tb()  { return cy.get("#edit-pass")  }
-    submit_btn()  { return cy.get("#edit-submit")  }
-    invalidLoginErrorMsg()  { return cy.get(".c-status-message__text")  }
-    toolbarItemUser()  { return cy.get("#toolbar-item-user")  }
+    email_tb()  { return cy.get('#ap_email')  }
+    home_signin_btn()  { return cy.get('#nav-link-accountList')  }
+    password_tb()  { return cy.get('#ap_password')  }
+    continue_btn()  { return cy.get('.a-button-inner > #continue')  }
+    signin_btn()  { return cy.get('#signInSubmit')  }
+    
     
     login(username,password){
-        cy.visit('https://mitsloan.mit.edu/user/login')
+        cy.visit('https://www.amazon.in/')
+        this.home_signin_btn().click()
         this.email_tb().type(username)
+        this.continue_btn().click()
         this.password_tb().type(password)
-        this.submit_btn().click()
+        this.signin_btn().click()
+
+
+        
     }
 
 
